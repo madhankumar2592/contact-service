@@ -1,4 +1,4 @@
-package com.beo.contact_service
+package com.beo
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

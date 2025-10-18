@@ -9,7 +9,4 @@ data class Address(
     val type: AddressType = AddressType.PRIVATE
 )
 
-enum class AddressType {
-    BUSINESS,
-    PRIVATE
-}
+

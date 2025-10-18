@@ -1,4 +1,4 @@
-package com.beo.contact_service
+package com.beo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

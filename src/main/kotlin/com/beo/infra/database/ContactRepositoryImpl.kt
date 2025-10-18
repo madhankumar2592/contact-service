@@ -11,8 +11,8 @@ class ContactRepositoryImpl(
 ) : ContactRepository {
 
     override fun save(contact: Contact): Contact {
-        val entity = mapper.toEntity(contact)
-        val savedEntity = contactDBRepository.save(entity)
+        val contactEntity = mapper.toEntity(contact)
+        val savedEntity = contactDBRepository.save(contactEntity)
         return mapper.toDomain(savedEntity)
     }
 
