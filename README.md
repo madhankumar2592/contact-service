@@ -156,17 +156,10 @@ The app runs on **[http://localhost:8080](http://localhost:8080)**
 
 ---
 
-### Switching to PostgreSQL (if needed)
-
-If you want to persist data permanently, just replace the H2 config in `application.yml` with your PostgreSQL connection details.
-No other code changes are needed.
-
----
-
 ### Final thoughts
 
 This challenge was fun to build — it’s small, but it captures real-world layering and design ideas I use in larger systems.
-If I had more time, I’d add a CLI mode and some tests around validation and persistence, but the current version is complete and functional.
+If I had more time, I’d add flyway scripts, but the current version is complete and functional.
 
 ---
 
