@@ -10,7 +10,7 @@ class ContactService(
 ) {
 
     fun createContact(contact: Contact): Contact {
-        validateAtLeastOneAddressOrPhone(contact)
+        validateAtLeastOneAddressOrPhoneIn(contact)
         return contactRepository.save(contact)
     }
 
@@ -22,10 +22,10 @@ class ContactService(
         contactRepository.findByLastName(lastName)
 
     fun updateContact(id: Long, updatedContact: Contact): Contact {
-        val existing = contactRepository.findById(id)
+        val existingContact = contactRepository.findById(id)
             ?: throw IllegalArgumentException("Contact with id $id not found")
 
-        val merged = existing.copy(
+        val contact = existingContact.copy(
             firstName = updatedContact.firstName,
             lastName = updatedContact.lastName,
             birthDate = updatedContact.birthDate,
@@ -33,15 +33,15 @@ class ContactService(
             phoneNumbers = updatedContact.phoneNumbers
         )
 
-        validateAtLeastOneAddressOrPhone(merged)
-        return contactRepository.update(merged)
+        validateAtLeastOneAddressOrPhoneIn(contact)
+        return contactRepository.update(contact)
     }
 
     fun deleteContact(id: Long) {
         contactRepository.deleteById(id)
     }
 
-    private fun validateAtLeastOneAddressOrPhone(contact: Contact) {
+    private fun validateAtLeastOneAddressOrPhoneIn(contact: Contact) {
         val hasAddress = contact.addresses.isNotEmpty()
         val hasPhone = contact.phoneNumbers.isNotEmpty()
 

@@ -27,7 +27,6 @@ class ContactMapper {
             }.toMutableList(),
             phoneNumbers = domain.phoneNumbers.map { ph ->
                 PhoneNumberEntity(
-                    id = ph.id,
                     number = ph.number,
                     type = ph.type
                 )
@@ -36,13 +35,12 @@ class ContactMapper {
 
     fun toDomain(entity: ContactEntity): Contact =
         Contact(
-            id = entity.id,
+            id = entity.id!!,
             firstName = entity.firstName,
             lastName = entity.lastName,
             birthDate = entity.birthDate,
             addresses = entity.addresses.map { addr ->
                 Address(
-                    id = addr.id,
                     street = addr.street,
                     houseNumber = addr.houseNumber,
                     postalCode = addr.postalCode,
@@ -52,7 +50,6 @@ class ContactMapper {
             }.toMutableList(),
             phoneNumbers = entity.phoneNumbers.map { ph ->
                 PhoneNumber(
-                    id = ph.id,
                     number = ph.number,
                     type = ph.type
                 )

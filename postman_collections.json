@@ -1,0 +1,110 @@
+{
+  "info": {
+    "name": "Contact Service API",
+    "description": "Collection for testing Contact Service endpoints in local environment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Contact",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Arun\",\n  \"lastName\": \"Kumar\",\n  \"birthDate\": \"1992-06-25\",\n  \"addresses\": [\n    {\n      \"street\": \"MG Road\",\n      \"houseNumber\": \"12A\",\n      \"postalCode\": \"641002\",\n      \"city\": \"Coimbatore\",\n      \"type\": \"PRIVATE\"\n    }\n  ],\n  \"phoneNumbers\": [\n    {\n      \"number\": \"+91-7200121685\",\n      \"type\": \"MOBILE_PRIVATE\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/contact-service/contacts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["contact-service", "contacts"]
+        },
+        "description": "Creates a new contact in the database."
+      }
+    },
+    {
+      "name": "Get All Contacts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/contact-service/contacts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["contact-service", "contacts"]
+        },
+        "description": "Fetches all contacts available in the system."
+      }
+    },
+    {
+      "name": "Get Contact By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/contact-service/contacts/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["contact-service", "contacts", "1"]
+        },
+        "description": "Retrieves details of a contact by its ID."
+      }
+    },
+    {
+      "name": "Search Contact by Last Name",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/contact-service/contacts/search?lastName=Kumar",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["contact-service", "contacts", "search"],
+          "query": [
+            { "key": "lastName", "value": "Kumar" }
+          ]
+        },
+        "description": "Searches contacts by last name."
+      }
+    },
+    {
+      "name": "Update Contact",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Arun\",\n  \"lastName\": \"Kumar\",\n  \"birthDate\": \"1992-06-25\",\n  \"addresses\": [\n    {\n      \"street\": \"Race Course\",\n      \"houseNumber\": \"10B\",\n      \"postalCode\": \"641018\",\n      \"city\": \"Coimbatore\",\n      \"type\": \"BUSINESS\"\n    }\n  ],\n  \"phoneNumbers\": [\n    {\n      \"number\": \"+91-9999999999\",\n      \"type\": \"MOBILE_PRIVATE\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/contact-service/contacts/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["contact-service", "contacts", "1"]
+        },
+        "description": "Updates an existing contact by ID."
+      }
+    },
+    {
+      "name": "Delete Contact",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/contact-service/contacts/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["contact-service", "contacts", "1"]
+        },
+        "description": "Deletes a contact record by ID."
+      }
+    }
+  ]
+}

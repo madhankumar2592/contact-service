@@ -11,22 +11,31 @@ data class Contact(
     val phoneNumbers: MutableList<PhoneNumber> = mutableListOf()
 ) {
     init {
-        require(firstName.isNotBlank()) { "First name is required." }
-        require(lastName.isNotBlank()) { "Last name is required." }
+        require(firstName.isNotBlank() && firstName.lowercase() != "null") {
+            "First name is required."
+        }
+        require(lastName.isNotBlank() && lastName.lowercase() != "null") {
+            "Last name is required."
+        }
 
-        val hasAddress = addresses.isNotEmpty()
-        val hasPhone = phoneNumbers.isNotEmpty()
-        require(hasAddress || hasPhone) {
-            "At least one address or phone number must be provided."
+
+        require(addresses.isNotEmpty() && phoneNumbers.isNotEmpty()) {
+            "At least one address and one phone number must be provided."
         }
 
         addresses.forEach { addr ->
-            require(addr.street.isNotBlank()) { "Address street is required." }
-            require(addr.houseNumber.isNotBlank()) { "Address house number is required." }
+            require(addr.street.isNotBlank() && addr.street.lowercase() != "null") {
+                "Address street is required."
+            }
+            require(addr.houseNumber.isNotBlank() && addr.houseNumber.lowercase() != "null") {
+                "Address house number is required."
+            }
         }
 
         phoneNumbers.forEach { phone ->
-            require(phone.number.isNotBlank()) { "Phone number is required." }
+            require(phone.number.isNotBlank() && phone.number.lowercase() != "null") {
+                "Phone number is required."
+            }
         }
     }
 

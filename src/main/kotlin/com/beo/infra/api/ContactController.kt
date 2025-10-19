@@ -1,4 +1,4 @@
-package com.beo.infra
+package com.beo.infra.api
 
 
 import com.beo.action.ContactService
@@ -14,8 +14,8 @@ class ContactController(
 
     @PostMapping
     fun addContact(@RequestBody contact: Contact): ResponseEntity<Contact> {
-        val contact = contactService.createContact(contact)
-        return ResponseEntity.ok(contact)
+        val newContact = contactService.createContact(contact)
+        return ResponseEntity.ok(newContact)
     }
 
     @GetMapping
